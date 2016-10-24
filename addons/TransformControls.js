@@ -414,10 +414,6 @@ module.exports = function (THREE) {
 
       E: [
         [ new THREE.Mesh( new THREE.TorusBufferGeometry( 1.25, 0.12, 2, 24 ), pickerMaterial ) ]
-      ],
-
-      XYZE: [
-        [ new THREE.Mesh() ]// TODO
       ]
 
     };
