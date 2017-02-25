@@ -68,6 +68,31 @@ module.exports = function( THREE ){
 
         }
 
+        // Do we see 'solid' in the first few bytes of the file?
+        // STL must begin with 'solid '
+        var fileLength = reader.byteLength;
+        if ( fileLength > 50 ) fileLength = 50;
+        var facet = [ 115, 111, 108, 105, 100 ];
+        var i = 0;
+        for ( var index = 0; index < fileLength; index ++ ) {
+          if ( reader.getUint8( index, false ) == facet[i] ) {
+
+            i++;
+
+            if ( i == 5 ) {
+
+              // 'solid' seen near the start of the file
+              return false;
+
+            }
+
+          } else {
+
+            i = 0;
+
+          }
+        }
+
         // some binary files will have different size from expected,
         // checking characters higher than ASCII to confirm is binary
         var fileLength = reader.byteLength;
