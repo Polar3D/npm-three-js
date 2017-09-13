@@ -45,7 +45,7 @@ module.exports = function( THREE ){
 
 			var texturePath = this.texturePath && ( typeof this.texturePath === "string" ) ? this.texturePath : THREE.Loader.prototype.extractUrlBase( url );
 
-			var loader = new THREE.XHRLoader( this.manager );
+			var loader = new THREE.FileLoader( this.manager );
 			loader.setWithCredentials( this.withCredentials );
 			loader.load( url, function ( text ) {
 
